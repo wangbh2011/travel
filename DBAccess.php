@@ -1,23 +1,17 @@
 <?php
 
 class DBAccess{
-	
 	public static $conn = null;
-	
 	public static function getConn(){
 		if($conn == null) {
 			try {
+				$conn = new PDO('mysql:host=localhost;dbname=u536512794_tiner;charset=utf8','u536512794_tiner','tiner');
 			} catch (PDOException $e) {
-				exit('¥Ç©`¥¿¥Ù©`¥¹½Ó¾AÊ§”¡¡£'.$e->getMessage());
+				exit('DB access error!!!'.$e->getMessage());
 			}
 		}
-		$conn = new PDO('mysql:host=localhost;dbname=tiner;charset=utf8','tiner','tiner');
 		return $conn;
 	}
-	
 }
-
-
-
 
 ?>

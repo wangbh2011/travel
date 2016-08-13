@@ -1,3 +1,7 @@
+<?php
+include 'DBAccess.php';
+$items = DBAccess::getConn()->query("SELECT id,item FROM tbl_tritems;");
+?>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -18,12 +22,13 @@
 	<div role="main" class="ui-content">
 	<form method="post" action="./saveTrInfo.php">
     <label for="travelarea">Item：</label>
-    <select name="travelarea" id="select-custom-3" multiple="multiple" data-native-menu="false">
+    <select name="travelarea" id="select-custom-3"  data-native-menu="false">
         <option>Choose…</option>
-        <option value="1">The 1st Option</option>
-        <option value="2">The 2nd Option</option>
-        <option value="3">The 3rd Option</option>
-        <option value="4">The 4th Option</option>
+       <?php
+       while($result = $items->fetch(PDO::FETCH_ASSOC)){
+           print("<option value='".$result['id']."'>".$result['item']."</option>");
+       }
+       ?>
     </select>
 	
     <label for="username">名前：</label>

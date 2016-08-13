@@ -18,13 +18,9 @@ $stmt -> bindParam(':item_id', $travelarea, PDO::PARAM_INT);
 $stmt -> bindParam(':remarks', $remarks, PDO::PARAM_STR);
 $stmt -> execute();
 
+header( "Location: ./index.php" ) ;
+
+// 終了
+exit ;
+
 ?>
-
-<!DOCTYPE html> 
-<html>
-<meta charset="UTF-8">
-<body>
-
-
-</body>
-</html>
